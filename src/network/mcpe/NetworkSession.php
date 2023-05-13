@@ -894,7 +894,7 @@ class NetworkSession{
 
 		$player=$this->getPlayer();
 		if(!is_null($player)) {
-			$layers = [new AbilitiesLayer(AbilitiesLayer::LAYER_BASE, $boolAbilities, 0.05 * $player->getMovementSpeed(), 0.1)];
+			$layers = [new AbilitiesLayer(AbilitiesLayer::LAYER_BASE, $boolAbilities, $player->getFlySpeed(), 0.1)];
 		}
 
 

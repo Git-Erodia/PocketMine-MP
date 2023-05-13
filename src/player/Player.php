@@ -187,6 +187,9 @@ class Player extends Human implements CommandSender, ChunkListener, IPlayer{
 	private const TAG_SPAWN_Z = "SpawnZ"; //TAG_Int
 	public const TAG_LEVEL = "Level"; //TAG_String
 	public const TAG_LAST_KNOWN_XUID = "LastKnownXUID"; //TAG_String
+	private float $flySpeed = 0.05;
+
+	public const DEFAULT_FLY_SPEED = 0.05;
 
 	/**
 	 * Validates the given username.
@@ -327,6 +330,24 @@ class Player extends Human implements CommandSender, ChunkListener, IPlayer{
 		$this->usedChunks[World::chunkHash($xSpawnChunk, $zSpawnChunk)] = UsedChunkStatus::NEEDED();
 
 		parent::__construct($spawnLocation, $this->playerInfo->getSkin(), $namedtag);
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getFlySpeed() : float
+	{
+		return $this->flySpeed;
+	}
+
+	/**
+	 * @param float $str
+	 *
+	 * @return void
+	 */
+	public function setFlySpeed(float $str) : void
+	{
+		$this->flySpeed = $str;
 	}
 
 	protected function initHumanData(CompoundTag $nbt) : void{
